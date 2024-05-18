@@ -1,6 +1,3 @@
-# Atcoder_with_Go
-AtcoderをGoでやろう！
-
 # atcoderコマンドの使用方法
 
 現在、GoとC++で使用することができます。
