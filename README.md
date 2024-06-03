@@ -23,7 +23,7 @@ $ atcoder submit
 # (参考) atcoderコマンドの設定方法
 atcoder-cli、online-judge-toolsがインストールされていることを前提とします。
 
-## 実行権限を与えます。
+## 実行権限を与える
 ```bash
 $ chmod +x atcoder.sh
 ```
