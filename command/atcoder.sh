@@ -35,9 +35,16 @@ elif [ "$1" = "test" ]; then
     path=$(acc config-dir)
     lang=$(jq -r '.["default-template"]' "${path}/config.json")
     if [ "$lang" = "cpp" ]; then
+    echo "C++"
         g++ main.cpp && oj t -d "./sample"
     elif [ "$lang" = "go" ]; then
+    echo "Go"
         oj t -d "./sample" -c "go run main.go"
+    elif [ "$lang" = "rust" ]; then
+    echo "Rust"
+        rustc -o a.out main.rs && oj t -d "./sample" -c "./a.out"
+    else
+        echo "Error: no such language"
     fi
 elif [ "$1" = "submit" ]; then
     acc s
