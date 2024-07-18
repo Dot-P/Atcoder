@@ -28,6 +28,17 @@ if [ "$1" = "new" ]; then
     if [ "$match" = "yes" ]; then
         acc config default-template "$3"
         acc new "$2"
+        if [ "$lang" = "rust" ]; then
+            cd "$2"  
+            problems=($(ls -d *))  
+            for problem in "${problems[@]}"; do
+                if [ -d "$problem/sample" ]; then 
+                    cd "$problem"
+                    cargo init --name "problem"  
+                    cd ..  
+                fi
+            done
+        fi
     else
         echo "Error: no template"
     fi
@@ -42,7 +53,8 @@ elif [ "$1" = "test" ]; then
         oj t -d "./sample" -c "go run main.go"
     elif [ "$lang" = "rust" ]; then
     echo "Rust"
-        rustc -o a.out main.rs && oj t -d "./sample" -c "./a.out"
+        cargo build --release 
+        oj t -d "./sample" -c "./target/release/problem"
     else
         echo "Error: no such language"
     fi

@@ -3,3 +3,6 @@ contest/*
 
 # sample-file
 sample
+
+# rust target
+target/
